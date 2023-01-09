@@ -1,0 +1,23 @@
+<span *ngFor="let ownedNft of nfts;">
+    {{ ownedNft.title }}
+</span>
+
+<div class="row">
+    <mat-card *ngFor="let token of userTokenBalance" class="token-card">
+        <mat-card-header>
+            <img mat-card-avatar src="../../../assets/usdc.png" width="40" height="40" alt="USDC" class="token-icon">
+            <mat-card-title>{{ token.token }}</mat-card-title>
+            <mat-card-subtitle>Ethereum</mat-card-subtitle>
+          </mat-card-header>
+
+
+        <mat-card-content>
+            {{ token.tokenBalance }}
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+<span *ngFor="let data of marketData">
+    {{ data }}
+</span>
