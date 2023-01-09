@@ -54,9 +54,9 @@
 
 
                         <mat-radio-group aria-label="configuration" formControlName="archetype">
-                            <mat-radio-button value="1">Investment Grade</mat-radio-button>
-                            <mat-radio-button value="2">High-Yield</mat-radio-button>
-                            <mat-radio-button value="3">Custom</mat-radio-button>
+                            <mat-radio-button value="1">investment grade</mat-radio-button>
+                            <mat-radio-button value="2">high yield</mat-radio-button>
+                            <mat-radio-button value="3">custom</mat-radio-button>
                         </mat-radio-group>
                         
                         <div [hidden]="!isFormExpanded">
@@ -71,8 +71,8 @@
                             </mat-form-field>
 
                             <mat-form-field id="minimum-tvl-field" >
-                                <mat-label>minimum tvl</mat-label>
-                                <input matInput formControlName="minTvl" type="number" id="minimum-tvl-input">
+                                <mat-label>minimum tvl - usd</mat-label>
+                                <input matInput formControlName="minTvl" type="number" id="minimum-tvl-input" step="50000">
                             </mat-form-field>
 
                             <mat-radio-group aria-label="liquidate rewards" id="liquidation-select" formControlName="liquidateRewards">

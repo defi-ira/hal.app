@@ -37,7 +37,24 @@ export class VaultService {
         vault2.pools.push(pool10);
         this.vaults.push(vault2);
 
-        const vault3: Vault = new Vault("USDT", "", "Arbitrum", "5.21% - 7.09%", "45", "1,231,092 USD", "usdt");
+        const vault3: Vault = new Vault("USDT", "", "Arbitrum", "5.01% - 9.09%", "45", "1,931,074 USD", "usdt");
+        vault3.pools.push(new YieldPool("AAVE V3", new Token("USDT", "usdt", true), "aave", 4.98));
+        vault3.pools.push(new YieldPool("Yearn", new Token("USDT", "usdt", true), "yfi", 6.38));
+        vault3.pools.push(new YieldPool("Hop", new Token("USDT", "usdt", true), "hop", 5.57));
+        vault3.pools.push(new YieldPool("Balancer", new Token("USDT", "usdt", true), "bal", 2.18));
+        vault3.pools.push(new YieldPool("Compound", new Token("USDT", "usdt", true), "comp", 3.32));
+        this.vaults.push(vault3);
+
+        const vault4: Vault = new Vault("BUSD", "", "Ethereum", "4.76% - 5.21%", "75", "360,981 USD", "busd");
+        vault4.pools.push(new YieldPool("AAVE V3", new Token("BUSD", "busd", true), "aave", 3.54));
+        vault4.pools.push(new YieldPool("Compound", new Token("BUSD", "busd", true), "comp", 3.42));
+        vault4.pools.push(new YieldPool("Hop", new Token("BUSD", "busd", true), "hop", 6.07));
+        vault4.pools.push(new YieldPool("Yearn", new Token("BUSD", "busd", true), "yfi", 3.00));
+        vault4.pools.push(new YieldPool("Balancer", new Token("BUSD", "busd", true), "bal", 5.03));
+        this.vaults.push(vault4);
+
+        /*
+        // dual coin pools 
         const vault4: Vault = new Vault("WBTC", "USDT", "Optimism", "13.38%", "75", "213,341 USD", "wbtc");
         const vault5: Vault = new Vault("ETH", "USDC", "Ethereum", "9.02%", "75", "105,625 USD", "eth");
         vault4.img2 = "usdt";
@@ -47,6 +64,7 @@ export class VaultService {
         this.vaults.push(vault3);
         this.vaults.push(vault4);
         this.vaults.push(vault5);
+        */
     }
 
     public getVaultData(token: string): Vault {

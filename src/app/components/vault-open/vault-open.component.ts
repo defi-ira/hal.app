@@ -8,6 +8,7 @@ import { Vault } from 'src/app/models/Vault';
 import { YieldPool } from 'src/app/models/YieldPool';
 import { ActivatedRoute } from '@angular/router';
 import { VaultService } from 'src/app/service/VaultService';
+import { ContractService } from 'src/app/service/ContractService';
 
 @Component({
   selector: 'app-vault',
@@ -42,7 +43,7 @@ export class VaultOpenComponent implements OnInit {
   public wbtc: number = 0;
   public usdt: number = 0;
 
-  constructor(private route: ActivatedRoute, private vaultService: VaultService) {
+  constructor(private route: ActivatedRoute, private vaultService: VaultService, private contractService: ContractService) {
     const id: string = this.route.snapshot.paramMap.get("token") as string;
     this.vault = this.vaultService.getVaultData(id);
   }
@@ -98,8 +99,6 @@ export class VaultOpenComponent implements OnInit {
   collapseConfigureForm = () => { this.isFormExpanded = false; }
 
   tokenUpdated($event: any) {
-    console.log($event);
-    console.log($event.target.value);
     this.usdt = $event.target.value * 16213;
   }
 

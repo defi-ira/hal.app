@@ -27,6 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { VaultService } from './service/VaultService';
+import { EffectsModule } from '@ngrx/effects';
+import { ContractService } from './service/ContractService';
 
 @NgModule({
   declarations: [
@@ -56,13 +58,15 @@ import { VaultService } from './service/VaultService';
     FormsModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    EffectsModule.forRoot([])
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
     useValue: { color: 'primary' },
     },
-    VaultService
+    VaultService,
+    ContractService
   ],
   bootstrap: [AppComponent]
 })

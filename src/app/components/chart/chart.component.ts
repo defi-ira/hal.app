@@ -39,12 +39,7 @@ export class ChartComponent implements OnInit, OnChanges {
         outstring += (new Date(entry["timestamp"]).getTime()) + "," + entry["apy"]+ "\n";
         return [new Date(entry["timestamp"]), entry["apy"]]; 
       });
-      console.log(outstring);
-      
-      console.log(this.dates);
-
       this.yieldData = response.data.map((entry: any) => { return [new Date(entry["timestamp"]).getTime(), entry["apy"]]; });
-      console.log(this.yieldData);
 
       const options: any = ({
         chart: {

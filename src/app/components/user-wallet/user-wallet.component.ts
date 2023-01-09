@@ -1,10 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Alchemy, Network, OwnedNft, OwnedNftsResponse, TokenBalance, TokenBalancesResponse, TokenBalanceSuccess, TokenBalanceType } from "alchemy-sdk";
-import { OpenSeaSDK, Network as OpenSeaNetwork } from 'opensea-js';
-import Web3 from 'web3';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Alchemy, Network, OwnedNft, OwnedNftsResponse, TokenBalance, TokenBalancesResponse, TokenBalanceSuccess } from "alchemy-sdk";
+import { Observable } from 'rxjs';
 import { ethers } from 'ethers';
 
 @Component({
@@ -41,17 +38,19 @@ export class UserWalletComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+
+    // Below are all API calls to external services
     /*
     this.loadNFTs().then((response) => {
       this.nfts = response.ownedNfts;
     });
 
     this.getMarketData().subscribe((response) => {
-      console.log(response);
       this.marketData = response;
     });
     */
 
+    
     this.loadTokenBalances().then((response) => {
       response.tokenBalances.forEach(balance => {
         if (balance.tokenBalance) { 
@@ -65,12 +64,11 @@ export class UserWalletComponent implements OnInit {
     });
 
     this.loadBalance().then((response) => {
-      console.log(response);
       if (response) {
         this.userTokenBalance.push(new UserTokenBalance("ETH", "0x0", ethers.utils.formatEther(parseInt(response["_hex"])), "eth"));
-        console.log(this.tokens);
       }
     });
+    
   }
 
   private async loadNFTs(): Promise<OwnedNftsResponse> {

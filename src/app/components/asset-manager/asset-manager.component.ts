@@ -41,7 +41,6 @@ export class AssetManagerComponent implements OnInit {
   }
 
   public handleSelectChange($event: any) {
-    console.log($event);
     this.selectedPoolId = $event.value;
     this.pools.forEach((pool) => {
       if (pool.id == this.selectedPoolId) {
@@ -51,7 +50,7 @@ export class AssetManagerComponent implements OnInit {
   }
 
   public depositUpdated($event: any) {
-    console.log($event);
+
   }
 
   public deposit() {
