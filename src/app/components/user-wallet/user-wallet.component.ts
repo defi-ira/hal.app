@@ -12,22 +12,12 @@ import { ethers } from 'ethers';
 export class UserWalletComponent implements OnInit {
 
   private config = {
-    apiKey: "PJkOEl4iMuFWVpY3QMr4hq8a2qfIS5Ht",
+    apiKey: "text",
     network: Network.ETH_MAINNET,
   };
   private alchemy = new Alchemy(this.config);
 
-  /*
-  Commented out until an OpenSea API can be obtained
-
-  private provider = new Web3.providers.HttpProvider('https://mainnet.infura.io');
-  private openseaSDK = new OpenSeaSDK(this.provider, {
-    networkName: OpenSeaNetwork.Main,
-    apiKey: YOUR_API_KEY
-  })
-  */
-
-  public address = 'sigman.eth';
+  public address = 'anon.eth';
   private satsMod = 1000000;
   public marketData = [];
   public nfts: OwnedNft[] = [];
@@ -38,18 +28,6 @@ export class UserWalletComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-
-    // Below are all API calls to external services
-    /*
-    this.loadNFTs().then((response) => {
-      this.nfts = response.ownedNfts;
-    });
-
-    this.getMarketData().subscribe((response) => {
-      this.marketData = response;
-    });
-    */
-
     
     this.loadTokenBalances().then((response) => {
       response.tokenBalances.forEach(balance => {
@@ -91,21 +69,6 @@ export class UserWalletComponent implements OnInit {
       return parseInt(parts[0], radix) + parseInt(parts[1], radix) / Math.pow(radix, parts[1].length);
     }
     return parseInt(parts[0], radix);
-  }
-
-  private getMarketData(): Observable<any> {
-    const headers = new HttpHeaders();
-    headers.append("Accept", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-
-    // https://rest.coinapi.io/v1/quotes/ETH/current?apikey="1B22C5F2-B142-4C19-8712-D733654CFAD0"
-    // https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?CMC_PRO_API_KEY="ee0fee5a-c681-45e8-a188-cdbeff257f35"
-    return this.http.get<any>("https://rest.coinapi.io/v1/quotes/BITSTAMP_SPOT_BTC_USD/current", {
-      headers: headers,
-      params: {
-        'apikey': "1B22C5F2-B142-4C19-8712-D733654CFAD0"
-      }
-      })
   }
 
 }
