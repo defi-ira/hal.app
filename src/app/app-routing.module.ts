@@ -5,13 +5,14 @@ import { AssetManagerComponent } from './components/asset-manager/asset-manager.
 import { HomeComponent } from './home/home.component';
 import { UserWalletComponent } from './components/user-wallet/user-wallet.component';
 import { VaultListComponent } from './components/vault-list/vault-list.component';
-import { VaultComponent } from './components/vault/vault.component';
+import { VaultOpenComponent } from './components/vault-open/vault-open.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'assets', component: AssetManagerComponent },
   { path: 'vaults', component: VaultListComponent },
-  { path: 'vaults/:id', component: VaultComponent }
+  { path: 'vaults/open/:token', component: VaultOpenComponent },
+  { path: 'vaults/:id', component: VaultOpenComponent }
 ];
 
 @NgModule({

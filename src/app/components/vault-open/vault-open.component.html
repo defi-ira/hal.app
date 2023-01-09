@@ -1,0 +1,144 @@
+<div class="row">
+    <mat-card id="vault-card">
+        <mat-card-header>
+
+            <mat-card-header *ngIf="vault.token2 != ''" class="double-token">
+                <img mat-card-avatar src='{{ "../../../assets/" + vault.img + ".png" }}' width="40" height="40" alt="USDC" class="token-icon overlay">
+                <img mat-card-avatar *ngIf="vault.img2 != ''" src='{{ "../../../assets/" + vault.img2 + ".png" }}' width="40" height="40" alt="USDC" class="token-icon underlay">
+                
+                <mat-card-title>{{ vault.token1 }} {{ vault.token2 }}</mat-card-title>
+                <mat-card-subtitle>{{ vault.network }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-header *ngIf="vault.img2 == ''">
+                <img mat-card-avatar src='{{ "../../../assets/" + vault.img + ".png" }}' width="40" height="40" alt="USDC" class="token-icon overlay">
+                <mat-card-title>
+                    {{ vault.token1 }}
+                </mat-card-title>
+                <mat-card-subtitle>{{ vault.network }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <a routerLink="/vaults" routerLinkActive="inactive" ariaCurrentWhenActive="page">
+                <mat-icon aria-hidden="false" aria-label="go" fontIcon="west"></mat-icon>
+            </a>
+
+
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-card class="vault-info-card">
+                <mat-card-header>
+                    <mat-card-title>available liquidity pools</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let pool of vault.pools">
+                            <img matChipAvatar src='{{ "../../../assets/" + pool.icon + ".png" }}' alt="pool-img"/>
+                            {{ pool.project }} - {{ pool.apy }}%
+                        </mat-chip>
+                        <!-- class="selected-chip" -->
+                    </mat-chip-list>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="vault-info-card" id="configure-vault-card">
+                <mat-card-header>
+                    <mat-card-title>configure</mat-card-title>
+                    <mat-icon aria-hidden="false" aria-label="go" fontIcon="add" *ngIf="isFormExpanded == false" (click)="expandConfigureForm()"></mat-icon>
+                    <mat-icon aria-hidden="false" aria-label="go" fontIcon="remove" *ngIf="isFormExpanded" (click)="collapseConfigureForm()"></mat-icon>
+                </mat-card-header>
+                <mat-card-content>
+
+                    <form [formGroup]="configureFormGroup">
+
+
+
+                        <mat-radio-group aria-label="configuration" formControlName="archetype">
+                            <mat-radio-button value="1">Investment Grade</mat-radio-button>
+                            <mat-radio-button value="2">High-Yield</mat-radio-button>
+                            <mat-radio-button value="3">Custom</mat-radio-button>
+                        </mat-radio-group>
+                        
+                        <div [hidden]="!isFormExpanded">
+
+                            <mat-form-field id="pool-type-field">
+                                <mat-label>pool type</mat-label>
+                                <mat-select id="pool-type-select" formControlName="poolType">
+                                    <mat-option value="lenders"> lenders </mat-option>
+                                    <mat-option value="lenders and bridges"> lenders and bridges </mat-option>
+                                    <mat-option value="bridges"> bridges </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field id="minimum-tvl-field" >
+                                <mat-label>minimum tvl</mat-label>
+                                <input matInput formControlName="minTvl" type="number" id="minimum-tvl-input">
+                            </mat-form-field>
+
+                            <mat-radio-group aria-label="liquidate rewards" id="liquidation-select" formControlName="liquidateRewards">
+                                <mat-label>liquidate rewards</mat-label>
+                                <mat-radio-button value="true">swap</mat-radio-button>
+                                <mat-radio-button value="false">hold</mat-radio-button>
+                            </mat-radio-group>
+
+                            <mat-radio-group aria-label="concentration select" id="exposure-select" formControlName="concentration">
+                                <mat-label>concentration</mat-label>
+                                <mat-radio-button value="single pool">single pool</mat-radio-button>
+                                <mat-radio-button value="diversified">diversified</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+
+                        <mat-progress-bar
+                            id="risk-bar"
+                            [color]="color"
+                            [mode]="mode"
+                            [value]="risk"
+                            [bufferValue]="bufferValue"
+                            matTooltip="risk measure">
+                        </mat-progress-bar>
+
+                    </form>
+
+
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="vault-info-card" id="open-vault-card">
+                <mat-card-header>
+                    <mat-card-title>open vault</mat-card-title>
+                </mat-card-header>
+                <mat-card-content id="add-lidquity-card-content">
+                    <mat-form-field class="token-input" layout-align="center center">
+                        <mat-label>{{ vault.token1 }}</mat-label>
+                        <input matInput type="number" placeholder="0.00" (change)="tokenUpdated($event)">
+                    </mat-form-field>
+                    <mat-chip class="max-chip">MAX</mat-chip>
+                    <!-- second token -->
+                    <!--
+                    <mat-icon aria-hidden="false" aria-label="go" fontIcon="add"></mat-icon>
+                    <mat-form-field class="token-input" layout-align="center center">
+                        <mat-label>USDT</mat-label>
+                        <input matInput type="number" placeholder="0.00 USDT" (change)="tokenUpdated($event)" value="{{usdt}}">
+                    </mat-form-field>
+                    <mat-chip class="max-chip">MAX</mat-chip>
+                    -->
+                    <button mat-raised-button color="primary" id="add-liq-button">Open Position</button>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="vault-info-card">
+                <mat-card-header>
+                    <mat-card-title>performance</mat-card-title>
+                    <mat-icon aria-hidden="false" aria-label="go" fontIcon="add" *ngIf="chartCollapsed" (click)="expandChart()"></mat-icon>
+                    <mat-icon aria-hidden="false" aria-label="go" fontIcon="remove" *ngIf="chartCollapsed == false" (click)="collapseChart()"></mat-icon>
+                </mat-card-header>
+                <mat-card-content>
+                    <div id="chart"></div>
+                </mat-card-content>
+            </mat-card>
+
+        </mat-card-content>
+
+    </mat-card>
+</div>

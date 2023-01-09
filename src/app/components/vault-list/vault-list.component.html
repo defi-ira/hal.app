@@ -16,7 +16,7 @@
                         {{ vault.token1 }} {{ vault.token2 }}
                     </mat-card-title>
                     <mat-card-subtitle>{{ vault.network }}</mat-card-subtitle>
-                    <a routerLink='{{ "/vaults/" + vault.id }}' routerLinkActive="inactive" ariaCurrentWhenActive="page">
+                    <a routerLink='{{ "/vaults/open/" + vault.token1 + "-" + vault.token2 }}' routerLinkActive="inactive" ariaCurrentWhenActive="page">
                         <mat-icon aria-hidden="false" aria-label="go" fontIcon="east"></mat-icon>
                     </a>
                 </mat-card-header>
@@ -25,7 +25,7 @@
                     <img mat-card-avatar src='{{ "../../../assets/" + vault.img + ".png" }}' width="40" height="40" alt="USDC" class="token-icon overlay">
                     <mat-card-title>{{ vault.token1 }}</mat-card-title>
                     <mat-card-subtitle>{{ vault.network }}</mat-card-subtitle>
-                    <a routerLink='{{ "/vaults/" + vault.id }}' routerLinkActive="inactive" ariaCurrentWhenActive="page">
+                    <a routerLink='{{ "/vaults/open/" + vault.token1 }}' routerLinkActive="inactive" ariaCurrentWhenActive="page">
                         <mat-icon aria-hidden="false" aria-label="go" fontIcon="east"></mat-icon>
                     </a>
                 </mat-card-header>

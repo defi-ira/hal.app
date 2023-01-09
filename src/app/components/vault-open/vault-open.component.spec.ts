@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VaultComponent } from './vault.component';
+import { VaultOpenComponent } from './vault-open.component';
 
 describe('VaultComponent', () => {
-  let component: VaultComponent;
-  let fixture: ComponentFixture<VaultComponent>;
+  let component: VaultOpenComponent;
+  let fixture: ComponentFixture<VaultOpenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VaultComponent ]
+      declarations: [ VaultOpenComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VaultComponent);
+    fixture = TestBed.createComponent(VaultOpenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

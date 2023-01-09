@@ -18,10 +18,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { VaultListComponent } from './components/vault-list/vault-list.component';
-import { VaultComponent } from './components/vault/vault.component';
+import { VaultOpenComponent } from './components/vault-open/vault-open.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { VaultService } from './service/VaultService';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,7 @@ import { MatChipsModule } from '@angular/material/chips';
     AssetManagerComponent,
     ChartComponent,
     VaultListComponent,
-    VaultComponent,
+    VaultOpenComponent,
     HomeComponent
   ],
   imports: [
@@ -46,9 +51,19 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatChipsModule
+    MatChipsModule,
+    MatRadioModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressBarModule,
+    MatTooltipModule
   ],
-  providers: [],
+  providers: [{
+    provide: MAT_RADIO_DEFAULT_OPTIONS,
+    useValue: { color: 'primary' },
+    },
+    VaultService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

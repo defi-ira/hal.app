@@ -1,0 +1,117 @@
+#vault-card {
+    margin: 70px 180px;
+}
+
+.vault-info-card {
+    margin: 10px;
+}
+
+.underlay {
+    position: absolute;
+    left: 65px;
+    z-index: 1;
+}
+
+.overlay {
+    z-index: 9999;
+}
+
+.double-token mat-card-title, .double-token mat-card-subtitle {
+    padding-left: 20px;
+}
+
+a mat-icon {
+    color: red;
+}
+
+mat-chip {
+    margin: 5px;
+}
+
+.selected-chip {
+    background-color: #df3939;
+    color: white;
+}
+
+mat-card-header mat-icon {
+    color: red;
+}
+
+.token-input {
+    margin: 20px 5px 5px 5px;
+    width: 150px;
+    display: inline-block;
+}
+
+.max-chip {
+    width: 60px;
+    display: inline-block;
+}
+
+#add-liq-button {
+    margin-left: 20px;
+}
+
+#open-vault-card {
+    width: 35%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#add-liquidity-card-content {
+    align-content: center;
+    align-items: center;
+}
+
+#configure-vault-card {
+    width: 55%;
+    display: inline-block;
+}
+
+mat-radio-group {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+mat-radio-button {
+    margin: 3px 10px;
+    text-align: center;
+}
+
+#pool-type-select {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#pool-type-field {
+    width: 60%;
+    margin: 5% 20% 0 20%;
+}
+
+#liquidation-select > mat-radio-button {
+    margin: 3px 20px;
+}
+
+#minimum-tvl-field {
+    width: 60%;
+    margin: 5% 20%;
+}
+
+#minimum-tvl-input {
+    width: 100%;
+}
+
+
+#exposure-select > mat-radio-button {
+    margin-top: 20px;
+}
+
+#risk-bar {
+    margin-top: 20px;
+    margin: 2% 15% 2% 15%;
+    width: 70%;
+    display: inline-block;
+}
+#risk-label {
+
+}
