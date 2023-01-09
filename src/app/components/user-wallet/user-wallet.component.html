@@ -3,16 +3,75 @@
 </span>
 
 <div class="row">
-    <mat-card *ngFor="let token of userTokenBalance" class="token-card">
+    <mat-card id="token-card">
         <mat-card-header>
-            <img mat-card-avatar src="../../../assets/usdc.png" width="40" height="40" alt="USDC" class="token-icon">
-            <mat-card-title>{{ token.token }}</mat-card-title>
-            <mat-card-subtitle>Ethereum</mat-card-subtitle>
-          </mat-card-header>
-
-
+            <mat-card-title>tokens</mat-card-title>
+        </mat-card-header>
         <mat-card-content>
-            {{ token.tokenBalance }}
+
+            <mat-card *ngFor="let token of userTokenBalance" class="token-card">
+                <mat-card-header>
+                    <img mat-card-avatar src='{{ "../../../assets/" + token.image + ".png" }}' width="40" height="40" alt="USDC" class="token-icon">
+                    <mat-card-title>{{ token.token }}</mat-card-title>
+                    <mat-card-subtitle>Ethereum</mat-card-subtitle>
+                  </mat-card-header>
+    
+                <mat-card-content>
+                    {{ token.tokenBalance }}
+                </mat-card-content>
+            </mat-card>
+
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div class="row">
+    <mat-card id="token-card">
+        <mat-card-header>
+            <mat-card-title>assets</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+            <mat-card class="token-card asset-card">
+                <mat-card-header>
+                    <img mat-card-avatar src='{{ "../../../assets/dai.png" }}' width="40" height="40" alt="DAI" class="token-icon">
+                    <mat-card-title>DAI - Arbitrum</mat-card-title>
+                    <mat-card-subtitle>7.81% Current Yield</mat-card-subtitle>
+                  </mat-card-header>
+    
+                <mat-card-content>
+
+                    <span>
+                        12,000 DAI 
+                    </span>
+
+                    <span class="green-text">
+                        + 3,621 USDT Optimized Loan
+                    </span>
+
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="token-card asset-card">
+                <mat-card-header>
+                    <img mat-card-avatar src='{{ "../../../assets/wbtc.png" }}' width="40" height="40" alt="WBTC" class="token-icon">
+                    <mat-card-title>WBTC - Optimism</mat-card-title>
+                    <mat-card-subtitle>12.43% Current Yield</mat-card-subtitle>
+                  </mat-card-header>
+    
+                <mat-card-content>
+
+                    <span>
+                        0.51 WBTC
+                    </span>
+
+                    <span class="green-text">
+                        + 5,298 USDC Optimized Loan
+                    </span>
+
+                </mat-card-content>
+            </mat-card>
+
         </mat-card-content>
     </mat-card>
 </div>

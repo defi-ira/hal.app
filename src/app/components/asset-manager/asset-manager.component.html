@@ -1,11 +1,14 @@
-<h2>Asset Manager</h2>
 <div class="row">
     <user-wallet></user-wallet>
 </div>
 
-
 <div class="row">
-    <mat-form-field appearance="fill" class="pool-select">
+  <mat-card id="yield-research-card">
+    <mat-card-header>
+      <mat-card-title>yields</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="fill" class="pool-select">
         <mat-label>Select Token/Project LP</mat-label>
         <mat-select (selectionChange)="handleSelectChange($event)">
           <mat-option *ngFor="let pool of pools" [value]="pool.id">
@@ -14,19 +17,29 @@
         </mat-select>
       </mat-form-field>
     
-    <app-chart
-        [poolId]="selectedPoolId"
-    ></app-chart>
+      <br/>
+      <span style="margin-left: 10px; font-size: 20px;">{{ selectedPool.token }} - {{ selectedPool.project }} - {{ selectedPool.network }}</span>
+      <app-chart
+          [poolId]="selectedPoolId"
+      ></app-chart>
 
+
+
+    <!--
     <div *ngIf="selectedPoolId.length > 0">
         <mat-form-field class="deposit-field">
-            <mat-label>Deposit/Convert USDC</mat-label>
+            <mat-label>Calculate Hypothetical Return</mat-label>
             <input matInput 
-              placeholder="Amount" 
+              placeholder="Amount"
               type="number"
               (change)="depositUpdated($event)"
               >
         </mat-form-field>
-        <button mat-raised-button color="primary">Deposit</button>
     </div>
+    -->
+
+    </mat-card-content>
+  </mat-card>
+
+
 </div>

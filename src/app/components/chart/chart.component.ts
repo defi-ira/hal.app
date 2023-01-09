@@ -20,6 +20,7 @@ export class ChartComponent implements OnInit, OnChanges {
   @Input("poolId") poolId: string = '';
 
   public yieldData = [];
+  public dates = [];
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +34,15 @@ export class ChartComponent implements OnInit, OnChanges {
 
   private bindPoolChart() {
     this.getPoolData().subscribe((response) => {
+      let outstring = "";
+      this.dates = response.data.map((entry: any) => { 
+        outstring += (new Date(entry["timestamp"]).getTime()) + "," + entry["apy"]+ "\n";
+        return [new Date(entry["timestamp"]), entry["apy"]]; 
+      });
+      console.log(outstring);
+      
+      console.log(this.dates);
+
       this.yieldData = response.data.map((entry: any) => { return [new Date(entry["timestamp"]).getTime(), entry["apy"]]; });
       console.log(this.yieldData);
 
@@ -84,13 +94,13 @@ export class ChartComponent implements OnInit, OnChanges {
     const headers = new HttpHeaders();
     headers.append("accept", "*/*");
     
-    /*
+    
     return this.http.get<any>("https://yields.llama.fi/chart/" + this.poolId, {
       headers: headers
     });
-    */
     
-    return new Observable<any>();
+    
+    // return new Observable<any>();
   }
 
 

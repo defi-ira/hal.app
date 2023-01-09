@@ -1,0 +1,76 @@
+
+<div class="row">
+    <mat-card id="vault-list-card">
+        <mat-card-header>
+            <mat-card-title>vaults</mat-card-title>
+            
+        </mat-card-header>
+        <mat-card-content>
+
+            <mat-card *ngFor="let vault of vaults" class="vault-card">
+                <mat-card-header *ngIf="vault.token2 != ''" class="double-token">
+                    <img mat-card-avatar src='{{ "../../../assets/" + vault.img + ".png" }}' width="40" height="40" alt="USDC" class="token-icon overlay">
+                    <img mat-card-avatar *ngIf="vault.img2 != ''" src='{{ "../../../assets/" + vault.img2 + ".png" }}' width="40" height="40" alt="USDC" class="token-icon underlay">
+                    
+                    <mat-card-title>{{ vault.token1 }} {{ vault.token2 }}</mat-card-title>
+                    <mat-card-subtitle>{{ vault.network }}</mat-card-subtitle>
+
+
+                    
+                </mat-card-header>
+                <mat-card-header *ngIf="vault.img2 == ''">
+                    <img mat-card-avatar src='{{ "../../../assets/" + vault.img + ".png" }}' width="40" height="40" alt="USDC" class="token-icon overlay">
+                    <mat-card-title>{{ vault.token1 }}</mat-card-title>
+                    <mat-card-subtitle>{{ vault.network }}</mat-card-subtitle>
+
+
+
+                </mat-card-header>
+
+
+
+    
+                <mat-card-content>
+                    <div class="vertical-align">
+                        <mat-icon aria-hidden="false" aria-label="percent-icon" fontIcon="percent"></mat-icon>
+                        {{ vault.apy }} APY
+                    </div>
+                    <div class="vertical-align" >
+                        <mat-icon aria-hidden="false" aria-label="north-icon" fontIcon="north"></mat-icon>
+                        Rising Yield
+                    </div>
+
+                    <div *ngIf="vault.fee == '35'" class="vertical-align medium-risk-field">
+                        <mat-icon aria-hidden="false" aria-label="grading-icon" fontIcon="grading"></mat-icon>
+                        Medium Risk
+                    </div>
+                    <div *ngIf="vault.fee == '45'" class="vertical-align low-risk-field">
+                        <mat-icon aria-hidden="false" aria-label="grading-icon" fontIcon="grading"></mat-icon>
+                        Low Risk
+                    </div>
+                    <div *ngIf="vault.fee == '75'" class="vertical-align high-risk-field">
+                        <mat-icon aria-hidden="false" aria-label="grading-icon" fontIcon="grading"></mat-icon>
+                        High Risk
+                    </div>
+
+                    <div class="vertical-align green-fee-field">
+                        <mat-icon aria-hidden="false" aria-label="finance-icon" fontIcon="money"></mat-icon>
+                        {{ vault.fee }} bps fee
+                    </div>
+                    <div class="vertical-align">
+                        <mat-icon aria-hidden="false" aria-label="lock-icon" fontIcon="lock"></mat-icon>
+                        {{ vault.tvum }} TVUM
+                    </div>
+                    <!-- past 7-days apy, mini-chart, risk factor, amount of protocol funds in this strat, -->
+                </mat-card-content>
+
+                <mat-card-footer>
+
+                </mat-card-footer>
+            </mat-card>
+
+        </mat-card-content>
+    </mat-card>
+
+
+</div>

@@ -7,10 +7,17 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<mat-toolbar>
-  <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">zurik</a>
+<mat-toolbar color="primary" class="header">
+  <a routerLink="/" routerLinkActive="inactive" ariaCurrentWhenActive="page" id="icon-slot">zurik</a>
   <span class="spacer"></span>
-  <li class="no-bullet"><a routerLink="/assets" routerLinkActive="active" ariaCurrentWhenActive="page">assets</a></li>
+  <li class="no-bullet"><a routerLink="/assets" routerLinkActive="active-route" ariaCurrentWhenActive="page">assets</a></li>
+  <span class="spacer"></span>
+  <li class="no-bullet"><a routerLink="/vaults" routerLinkActive="active-route" ariaCurrentWhenActive="page">vaults</a></li>
+
+  <span class="right-spacer"></span>
+  <button mat-raised-button color="warn" style="color: grey;">Connect Wallet</button>
 </mat-toolbar>
+
+<div id="particles-js"></div>
 
 <router-outlet></router-outlet>

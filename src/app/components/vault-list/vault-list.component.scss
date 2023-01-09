@@ -1,0 +1,59 @@
+.vault-card {
+    display: inline-block;
+    width: 92%;
+    margin: 0 10px 10px 10px;
+}
+
+.token-icon {
+    height: 40px;
+    width: 40px;
+}
+
+#vault-list-card {
+    margin: 10px !important;
+}
+
+.vertical-align > * {
+    vertical-align: middle;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+}
+
+.vertical-align {
+    width: 180px;
+    display: inline-block;
+}
+
+.medium-risk-field {
+    color: goldenrod;
+}
+
+.green-fee-field {
+    color: green;
+}
+
+.low-risk-field {
+    color: green;
+}
+.high-risk-field {
+    color: red;
+}
+
+.vault-card:hover {
+    background-color: rgba($color: #010101, $alpha: 0.3);
+}
+
+.underlay {
+    position: absolute;
+    left: 40px;
+    z-index: 1;
+}
+
+.overlay {
+    z-index: 9999;
+}
+
+.double-token mat-card-title, .double-token mat-card-subtitle {
+    padding-left: 20px;
+}

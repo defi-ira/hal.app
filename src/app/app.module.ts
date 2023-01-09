@@ -17,13 +17,20 @@ import { ChartComponent } from './components/chart/chart.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { VaultListComponent } from './components/vault-list/vault-list.component';
+import { VaultComponent } from './components/vault/vault.component';
+import { MatIconModule } from '@angular/material/icon';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserWalletComponent,
     AssetManagerComponent,
-    ChartComponent
+    ChartComponent,
+    VaultListComponent,
+    VaultComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Alchemy, Network, OwnedNft, OwnedNftsResponse, TokenBalance, TokenBalancesResponse, TokenBalanceSuccess } from "alchemy-sdk";
+import { Alchemy, Network, OwnedNft, OwnedNftsResponse, TokenBalance, TokenBalancesResponse, TokenBalanceSuccess, TokenBalanceType } from "alchemy-sdk";
 import { OpenSeaSDK, Network as OpenSeaNetwork } from 'opensea-js';
 import Web3 from 'web3';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { ethers } from 'ethers';
 
 @Component({
   selector: 'user-wallet',
@@ -57,11 +58,18 @@ export class UserWalletComponent implements OnInit {
           balance.tokenBalance = (this.parseFloat(balance.tokenBalance, 16)/this.satsMod)
             .toLocaleString("en-us", {style: "decimal", minimumFractionDigits: 2, maximumFractionDigits: 8}); 
           
-          this.userTokenBalance.push(new UserTokenBalance("USDC", balance.contractAddress, balance.tokenBalance));
+          this.userTokenBalance.push(new UserTokenBalance("USDC", balance.contractAddress, balance.tokenBalance, "usdc"));
         };
-
       });
       this.tokens = response.tokenBalances;
+    });
+
+    this.loadBalance().then((response) => {
+      console.log(response);
+      if (response) {
+        this.userTokenBalance.push(new UserTokenBalance("ETH", "0x0", ethers.utils.formatEther(parseInt(response["_hex"])), "eth"));
+        console.log(this.tokens);
+      }
     });
   }
 
@@ -73,6 +81,10 @@ export class UserWalletComponent implements OnInit {
   private async loadTokenBalances(): Promise<TokenBalancesResponse> {
     const tokens = await this.alchemy.core.getTokenBalances(this.address, [this.usdcContract]);
     return tokens;
+  }
+
+  private async loadBalance(): Promise<any> {
+    return this.alchemy.core.getBalance(this.address, "latest");
   }
 
   private parseFloat(str: string, radix: number) {
@@ -104,12 +116,14 @@ class UserTokenBalance implements TokenBalanceSuccess {
   public token: string;
   contractAddress: string;
   tokenBalance: string;
+  image: string;
   error: null;
 
-  constructor(token: string, addr: string, bal: string) {
+  constructor(token: string, addr: string, bal: string, image: string) {
     this.contractAddress = addr;
     this.tokenBalance = bal;
     this.token = token;
+    this.image = image
     this.error = null;
   }
 }

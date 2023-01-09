@@ -1,9 +1,22 @@
 .token-card {
-    max-width: 300px;
+    display: inline-block;
+    width: 30%;
     margin: 0 10px 10px 10px;
 }
 
 .token-icon {
     height: 40px;
     width: 40px;
+}
+
+#token-card {
+    margin: 10px !important;
+}
+
+.green-text {
+    color: green;
+}
+
+.asset-card:hover {
+    background-color: rgba($color: #010101, $alpha: 0.3);
 }

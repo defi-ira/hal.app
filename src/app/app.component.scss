@@ -1,9 +1,49 @@
 li.no-bullet {
     list-style-type: none; /* Remove bullets */
+
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margins */
+    color: white !important;
+    text-decoration: none !important;
 }
 
 .spacer {
     width: 20px;
+}
+
+.header { 
+    width: 100%;
+}
+
+.header > * {
+    color: white;
+    text-decoration: none;
+}
+
+a {
+    color: white;
+    text-decoration: none; /* no underline */
+}
+
+.icon-slot {
+    font-size: 42px;
+}
+
+#connect-wallet-btn {
+    background-color: grey !important;
+}
+
+.right-spacer {
+    flex: 1 1 auto;
+}
+
+.active-route {
+    text-decoration: underline;
+}
+
+#particles-js {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -100;
 }

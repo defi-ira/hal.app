@@ -1,0 +1,36 @@
+#home-heading {
+    color: #B62020;
+    font-size: 48px;
+    font-style: italic;
+    text-align: center;
+}
+
+#home-subheading {
+    margin-top: 20px;
+    color: #B62020;
+    font-size: 22px;
+    text-align: center;
+}
+
+#home {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#newsletter-input {
+    margin-top: 20px;
+    align-content: center;
+    text-align: center;
+    color: #B62020;
+}
+
+.placeholder {
+    color: #B62020 !important;
+}
+
+.mat-input-element::data-placeholder{
+    color: #B62020;
+ }
