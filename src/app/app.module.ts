@@ -20,7 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { VaultListComponent } from './components/vault-list/vault-list.component';
 import { VaultComponent } from './components/vault/vault.component';
 import { MatIconModule } from '@angular/material/icon';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './home/home.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { HomeComponent } from './components/home/home.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

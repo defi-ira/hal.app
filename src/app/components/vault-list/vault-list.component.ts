@@ -20,7 +20,9 @@ export class VaultListComponent implements OnInit {
     const vault4: Vault = new Vault("WBTC", "USDT", "Optimism", "13.38%", "75", "213,341 USD", "wbtc");
     const vault5: Vault = new Vault("ETH", "USDC", "Ethereum", "9.02%", "75", "105,625 USD", "eth");
     vault4.img2 = "usdt";
+    vault4.id = 4;
     vault5.img2 = "usdc";
+    vault5.id = 5;
     this.vaults.push(vault1);
     this.vaults.push(vault2);
     this.vaults.push(vault3);
@@ -30,7 +32,8 @@ export class VaultListComponent implements OnInit {
 
 }
 
-class Vault {
+export class Vault {
+  public id: number = 2;
   public token1: string;
   public token2: string;
   public network: string;

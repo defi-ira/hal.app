@@ -10,7 +10,7 @@
 }
 
 #vault-list-card {
-    margin: 10px !important;
+    margin: 20px 40px !important;
 }
 
 .vertical-align > * {
@@ -40,10 +40,6 @@
     color: red;
 }
 
-.vault-card:hover {
-    background-color: rgba($color: #010101, $alpha: 0.3);
-}
-
 .underlay {
     position: absolute;
     left: 40px;
@@ -56,4 +52,8 @@
 
 .double-token mat-card-title, .double-token mat-card-subtitle {
     padding-left: 20px;
+}
+
+a mat-icon {
+    color: red;
 }
