@@ -101,6 +101,10 @@ mat-radio-button {
     width: 100%;
 }
 
+#risk-select {
+    margin: 0 auto 0 auto;
+}
+
 
 #exposure-select > mat-radio-button {
     margin-top: 20px;
@@ -111,7 +115,4 @@ mat-radio-button {
     margin: 2% 15% 2% 15%;
     width: 70%;
     display: inline-block;
-}
-#risk-label {
-
 }

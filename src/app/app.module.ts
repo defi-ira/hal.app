@@ -27,7 +27,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { VaultService } from './service/VaultService';
-import { EffectsModule } from '@ngrx/effects';
 import { ContractService } from './service/ContractService';
 
 @NgModule({
@@ -58,8 +57,7 @@ import { ContractService } from './service/ContractService';
     FormsModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatTooltipModule,
-    EffectsModule.forRoot([])
+    MatTooltipModule
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,

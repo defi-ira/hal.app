@@ -59,8 +59,9 @@ export class VaultOpenComponent implements OnInit {
       this.vaultConfigureSelect();
     });
 
-    // recalculate risk on form group item change and ensure custom is selected
-
+    this.expandConfigureForm();
+    this.expandChart();
+    
   }
 
   private vaultConfigureSelect() {
