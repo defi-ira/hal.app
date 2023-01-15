@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Alchemy, Network, OwnedNft, OwnedNftsResponse, TokenBalance, TokenBalancesResponse, TokenBalanceSuccess } from "alchemy-sdk";
 import { Observable } from 'rxjs';
 import { ethers } from 'ethers';
+import { ContractService } from 'src/app/service/ContractService';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'user-wallet',
@@ -12,7 +14,7 @@ import { ethers } from 'ethers';
 export class UserWalletComponent implements OnInit {
 
   private config = {
-    apiKey: "text",
+    apiKey: "PJkOEl4iMuFWVpY3QMr4hq8a2qfIS5Ht",
     network: Network.ETH_MAINNET,
   };
   private alchemy = new Alchemy(this.config);
@@ -25,7 +27,11 @@ export class UserWalletComponent implements OnInit {
   public userTokenBalance: UserTokenBalance[] = [];
   private usdcContract = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
 
-  constructor(private http: HttpClient) { }
+  private wallet$: Observable<string>;
+
+  constructor(private http: HttpClient, private store: Store<{ wallet: string }>) {
+    this.wallet$ = store.select('wallet');
+  }
 
   ngOnInit(): void {
     
@@ -46,6 +52,7 @@ export class UserWalletComponent implements OnInit {
         this.userTokenBalance.push(new UserTokenBalance("ETH", "0x0", ethers.utils.formatEther(parseInt(response["_hex"])), "eth"));
       }
     });
+
     
   }
 

@@ -8,6 +8,8 @@ import { UserWalletComponent } from './components/user-wallet/user-wallet.compon
 import { AssetManagerComponent } from './components/asset-manager/asset-manager.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { StoreModule } from '@ngrx/store';
+
 import { ChartModule } from 'angular-highcharts';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -28,6 +30,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { VaultService } from './service/VaultService';
 import { ContractService } from './service/ContractService';
+import { walletReducer } from './state/wallet.reducer';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,8 @@ import { ContractService } from './service/ContractService';
     FormsModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    StoreModule.forRoot({ count: walletReducer })
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
