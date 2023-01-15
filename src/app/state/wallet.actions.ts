@@ -1,4 +1,4 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export const addWallet = createAction('[Wallet Component] Add');
-export const reset = createAction('[Wallet Component] Reset');
+export const addWallet = createAction('[Component] Add', props<{wallet: string}>());
+export const reset = createAction('[Component] Reset');

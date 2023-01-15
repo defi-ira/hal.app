@@ -61,7 +61,7 @@ import { walletReducer } from './state/wallet.reducer';
     ReactiveFormsModule,
     MatProgressBarModule,
     MatTooltipModule,
-    StoreModule.forRoot({ count: walletReducer })
+    StoreModule.forRoot({ wallet: walletReducer })
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
