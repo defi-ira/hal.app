@@ -41,6 +41,10 @@ export class ChartComponent implements OnInit, OnChanges {
       });
       this.yieldData = response.data.map((entry: any) => { return [new Date(entry["timestamp"]).getTime(), entry["apy"]]; });
 
+      let outData = response.data.map((entry: any) => { return new Date(entry["timestamp"]).getTime() + "\", \"" + entry["apy"]});
+
+      console.log(outData);
+
       const options: any = ({
         chart: {
           zoomType: 'x'

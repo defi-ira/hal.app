@@ -15,7 +15,7 @@ import { Web3State } from 'src/app/models/Web3State';
 export class UserWalletComponent implements OnInit {
 
   private config = {
-    apiKey: "test",
+    apiKey: "PJkOEl4iMuFWVpY3QMr4hq8a2tetsqfIS5Ht",
     network: Network.ETH_MAINNET,
   };
   private alchemy = new Alchemy(this.config);

@@ -8,13 +8,13 @@ export const ParticlesConfig = {
         }
       },
       color: {
-        value: '#B62020'
+        value: '#39FF14'
       },
       shape: {
         type: 'polygon',
         stroke: {
           width: 1,
-          color: '#B62020'
+          color: '#39FF14'
         },
         polygon: {
           nb_sides: 7
@@ -35,7 +35,7 @@ export const ParticlesConfig = {
         random: true,
         anim: {
           enable: false,
-          speed: 10,
+          speed: 3,
           size_min: 1.25,
           sync: true
         }
@@ -43,13 +43,13 @@ export const ParticlesConfig = {
       line_linked: {
         enable: true,
         distance: 150,
-        color: '#B62020',
+        color: '#39FF14',
         opacity: 1,
         width: 1
       },
       move: {
         enable: true,
-        speed: 2,
+        speed: 1,
         direction: 'none',
         random: true,
         straight: false,

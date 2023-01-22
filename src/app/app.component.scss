@@ -2,7 +2,7 @@ li.no-bullet {
     list-style-type: none; /* Remove bullets */
 
     padding: 0; /* Remove padding */
-    margin: 0; /* Remove margins */
+    margin: 10px 0 0 0; /* Remove margins */
     color: white !important;
     text-decoration: none !important;
 }
@@ -11,13 +11,21 @@ li.no-bullet {
     width: 20px;
 }
 
+.large-spacer {
+    width: 60px;
+}
+
 .header { 
     width: 100%;
+    background-color: transparent;
+    padding-left: 18%;
+    padding-right: 18%;
 }
 
 .header > * {
     color: white;
     text-decoration: none;
+
 }
 
 a {
@@ -42,8 +50,12 @@ a {
 }
 
 #particles-js {
-    height: 100%;
-    width: 100%;
+    margin-top: 300px;
+    padding-left: 15%;
+    height: 200px;
+    width: 70%;
     position: fixed;
     z-index: -100;
 }
+
+
